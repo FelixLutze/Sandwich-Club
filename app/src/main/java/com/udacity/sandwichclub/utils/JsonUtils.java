@@ -24,7 +24,7 @@ public class JsonUtils {
             sandwich.setMainName(new JSONObject(jsonObject.getString("name")).getString("mainName"));
             sandwich.setPlaceOfOrigin(jsonObject.getString("placeOfOrigin"));
             sandwich.setDescription(jsonObject.getString("description"));
-            sandwich.setImage("image");
+            sandwich.setImage(jsonObject.getString("image"));
 
             //Get and set AlsoKnownAs as a String list
             jsonArray = new JSONObject(jsonObject.getString("name")).getJSONArray("alsoKnownAs");
