@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -67,12 +68,21 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
+        if(sandwich.getAlsoKnownAs().isEmpty()) {
+            findViewById(R.id.also_known_tv_title).setVisibility(View.GONE);
+            alsoKnownAsTv.setVisibility(View.GONE);
+        }
+
+        if(sandwich.getPlaceOfOrigin().isEmpty()) {
+            findViewById(R.id.origin_tv_title).setVisibility(View.GONE);
+            originTv.setVisibility(View.GONE);
+        }
+
         setTitle(sandwich.getMainName());
         Picasso.with(this).load(sandwich.getImage()).into(ingredientsIv);
         alsoKnownAsTv.setText(String.join(", ", sandwich.getAlsoKnownAs()));
         ingredientsTv.setText(String.join(", ", sandwich.getIngredients()));
         originTv.setText(sandwich.getPlaceOfOrigin());
         descriptionTv.setText(sandwich.getDescription());
-
     }
 }
