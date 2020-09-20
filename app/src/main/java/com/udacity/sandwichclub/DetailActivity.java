@@ -13,6 +13,8 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
+import static com.squareup.picasso.Picasso.*;
+
 public class DetailActivity extends AppCompatActivity {
     ImageView ingredientsIv;
     TextView alsoKnownAsTv;
@@ -79,7 +81,7 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         setTitle(sandwich.getMainName());
-        Picasso.with(this).load(sandwich.getImage()).into(ingredientsIv);
+        with(this).load(sandwich.getImage()).into(ingredientsIv);
         alsoKnownAsTv.setText(String.join(", ", sandwich.getAlsoKnownAs()));
         ingredientsTv.setText(String.join(", ", sandwich.getIngredients()));
         originTv.setText(sandwich.getPlaceOfOrigin());
